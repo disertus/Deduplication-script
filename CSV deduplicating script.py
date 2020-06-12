@@ -86,9 +86,6 @@ new_csv_text=StringVar()
 new_csv_name=Entry(window, width=40, textvariable=new_csv_text, bg='#6A5F5D', fg='#E5D4D1')
 new_csv_name.grid(row=2, column=1, padx=20)
 
-# Giving the possibility to choose the original file from the File Dialogue window
-# old_csv_name=filedialog.askopenfilename(initialdir=' ', title='Select a file', filetypes=(('csv files','*.csv'),('all files', '*.*')))
-
 # Adding a button activating program's function 'click()'
 Button(window, text='Run', width=10, bg='#6A5F5D', fg='#E5D4D1', command=click) .grid(row=3, column=1, sticky=N)
 
