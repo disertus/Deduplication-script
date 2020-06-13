@@ -7,6 +7,9 @@ The analysis of competitors' linkbuilding strategy meant going through tons of S
 
 I needed a tool which would make the selection of highest-ranking url and deletion of duplicates fast and easy. This is how the deduplication script appeared.
 
+![Deduplication script with GUI screenshot]
+(https://ibb.co/zXvBZnx)
+
 ### How to use the script?:
 - put the CSV file that you would like to deduplicate inside the script folder
 - indicate the name of the csv file containing multiple URLs with different paths in the column #1
