@@ -9,7 +9,7 @@ I needed a tool which would make the selection of highest-ranking urls and delet
 
 Input:
 
-   ![Deduplication script with GUI screenshot]
+   ![Deduplication script with GUI screenshot](https://i.ibb.co/fXGFdRk/Screenshot-from-2020-06-13-11-50-28.png)
    
 Result:
 
