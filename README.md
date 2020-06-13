@@ -1,7 +1,7 @@
 # Deduplication script
 
 ### Intro
-This program was developed in Feb 2020 for SEO purposes at my previous Marketing job.
+This is my very first program, that was developed in Feb 2020 for SEO purposes at my previous Marketing job.
 
 The analysis of competitors' linkbuilding strategy meant going through tons of SEMrush csv reports, containing partly-replicated URLs and their Domain Authority (ex: 81 - google.com/currency, 74 - google.com/maps, and 50 - google.com/dollar/sign were represented as unique domains with varying Domain Authority).
 
