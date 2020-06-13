@@ -12,6 +12,7 @@ Input:
    ![Deduplication script with GUI screenshot](https://i.ibb.co/sKYNqmR/Screenshot-from-2020-06-13-11-15-53.png)
    
 Result:
+
 ![Deduplication result](https://i.ibb.co/6NhLBv6/Screenshot-from-2020-06-13-11-44-02.png)
 
 ### How to use the script?:
