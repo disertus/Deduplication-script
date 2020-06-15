@@ -13,35 +13,40 @@ def timer_wrapper(func):
         func()
         end = time.time()
         return print(start - end)
+
     return wrapper
 
 
-@timer_wrapper
-def click():
-    """Function triggered by the GUI button"""
+def write_deduplicated_links_to_new_csv(cleaned_list, dirty_list):
+    """Writes the deduplicated entries into a new CSV file"""
 
-    # Opening the original csv file, reading through each row and appending contents to an empty_list
-    try:
-        domains_list = []
-        with open(original_csv_text.get(), newline='', encoding='utf-8') as csv_file:
-            row_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
-            for row in row_reader:
-                domains_list.append(row[0])
-
-    except:
-        l1 = Label(window, text='The operation has failed due to bad input! \nPlease try again \n', bg='#6A5F5D',
-                   fg='#FF8B73')
-        l1.grid(row=3, column=0, padx=10, pady=15)
-
-    # Creating/opening the new CSV file
+    # Creating a new CSV file
     new_csv = new_csv_text.get()
+
+    # 'newline' parameter makes sure no blank lines appear between cells in the new_csv, otherwise they do
+    with open(new_csv, "w+", newline='', encoding='utf-8') as fhand:
+        csv_writer = csv.writer(fhand)
+        # putting 'newcell' in [] assures that the list items are iterated as a whole, not as characters of the string
+        [csv_writer.writerow([newcell]) for newcell in cleaned_list]
+        print("*********\nDeletion of partial duplicates among URL - Finished")
+
+    l1 = Label(window, text='The operation has been successfully finished! \nTotal amount of items changed: \n' + str(
+        len(dirty_list)) + ' ---> ' + str(len(cleaned_list)) + ' items\n', bg='#6A5F5D', fg='#8EE373')
+    l1.grid(row=3, column=0, padx=10, pady=10)
+
+    print("End of program...")
+    return cleaned_list
+
+
+def clean_the_duplicates(dirty_list):
+    """Deletes the duplicates from the original list of domains and adds unique links to a new 'clean' list"""
 
     empty_list = []
     empty_set = set()
 
     # Trying to find all expressions with regex pattern for URLs
 
-    for i in domains_list:
+    for i in dirty_list:
         search_item = re.findall('//.*?/', i)  # Identifies the url pattern //.../ inside the raw
         if len(search_item) < 1:
             continue
@@ -50,23 +55,32 @@ def click():
             empty_list.append(i)
         else:
             continue
+    return write_deduplicated_links_to_new_csv(empty_list, dirty_list=dirty_list)
 
-    # Writing deduplicated items into a new CSV file
-    # 'newline' parameter makes sure no blank lines appear between cells in the new_csv, otherwise they do
-    with open(new_csv, "w+", newline='', encoding='utf-8') as fhand:
-        csv_writer = csv.writer(fhand)
-        # putting 'newcell' in [] assures that the list items are iterated as a whole, not as characters of the string
-        [csv_writer.writerow([newcell]) for newcell in empty_list]
-        print("*********\nDeletion of partial duplicates among URL - Finished")
 
-    l1 = Label(window, text='The operation has been successfully finished! \nTotal amount of items changed: \n' + str(
-        len(domains_list)) + ' ---> ' + str(len(empty_list)) + ' items\n', bg='#6A5F5D', fg='#8EE373')
-    l1.grid(row=3, column=0, padx=10, pady=10)
+def read_the_csv():
+    """Opens the original csv file, reads through each row and appends contents to an empty list"""
 
-    result = empty_list
+    try:
+        list_with_duplicates = []
+        with open(original_csv_text.get(), newline='', encoding='utf-8') as csv_file:
+            row_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
+            for row in row_reader:
+                list_with_duplicates.append(row[0])
 
-    print("End of program...")
-    return result
+    except:
+        l1 = Label(window, text='The operation has failed due to bad input! \nPlease try again \n', bg='#6A5F5D',
+                   fg='#FF8B73')
+        l1.grid(row=3, column=0, padx=10, pady=15)
+
+    return clean_the_duplicates(list_with_duplicates)
+
+
+@timer_wrapper
+def click():
+    """High-level function triggered by the GUI button"""
+
+    return read_the_csv()
 
 
 # Creating a window object
