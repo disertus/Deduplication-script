@@ -13,7 +13,7 @@ Input:
    
 Result:
 
-![Deduplication result](https://i.ibb.co/6NhLBv6/Screenshot-from-2020-06-13-11-44-02.png)
+![Deduplication result](https://i.ibb.co/ZJvK4nN/Screenshot-from-2020-06-15-11-04-00.png)
 
 ### How to use the script?:
 - put the CSV file that you would like to deduplicate inside the script folder
