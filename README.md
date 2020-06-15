@@ -3,7 +3,9 @@
 ### Intro
 This is my very first program, that was developed in Feb 2020 for SEO purposes at my previous Marketing job.
 
-The analysis of competitors' linkbuilding strategy meant going through tons of SEMrush csv reports, containing partly-duplicated URLs and their Domain Authority (ex: 81 - google.com/currency, 74 - google.com/maps, and 50 - google.com/dollar/sign were represented as unique domains with varying Domain Authority).
+The analysis of competitors' linkbuilding strategy meant going through tons of SEMrush csv reports, containing URLs with partly duplicated URLs and their Domain Authority (ex: 81 - google.com/currency, 74 - google.com/maps, and 50 - google.com/dollar/sign were represented as unique domains with varying Domain Authority).
+
+Partly duplicated domains == domains with the same domain name, but different /paths.
 
 I needed an easy-to-use tool which could be used by others, and would make the selection of highest-ranking urls by domain and deletion of thousands of long-tail duplicates fast and easy (avoiding manual work). This is how the deduplication script appeared.
 
